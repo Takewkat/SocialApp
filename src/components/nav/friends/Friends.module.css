@@ -1,0 +1,6 @@
+.friends__name {
+    margin: 60px 20px;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}

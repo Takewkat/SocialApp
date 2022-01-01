@@ -6,21 +6,22 @@ import Friends from './friends/Friends';
 
 //activeClassName no longer support. I should find the solution
 //className={({ isActive }) => "nav__link" + (isActive ? ".active" : "")}
+//className={`${classes['nav__link']} ${isActive && classes['active']}`
 function Nav(props) {
   return (
-    <nav className={ classes.nav }>
-      <ul className={ classes.nav__list }>
-        <li className={classes.nav__item}>
-          <NavLink className={classes.nav__link} end to="/profile">Profile</NavLink>
+    <nav className={ classes['nav']}>
+      <ul className={ classes['nav__list']}>
+        <li className={classes['nav__item']}>
+          <NavLink className={classes['nav__link']} end to="/profile">Profile</NavLink>
         </li>
-        <li className={classes.nav__item}>
-          <NavLink className={classes.nav__link} to="/users">Users</NavLink>
+        <li className={classes['nav__item']}>
+          <NavLink className={classes['nav__link']} to="/users">Users</NavLink>
         </li>
-        <li className={ classes.nav__item }>
-          <NavLink className={classes.nav__link} to="/dialogs">Messages</NavLink>
+        <li className={classes['nav__item']}>
+          <NavLink className={classes['nav__link']} to="/dialogs">Messages</NavLink>
         </li>
-        <li className={ classes.nav__item }>
-          <NavLink className={classes.nav__link} to="/settings">Settings</NavLink>
+        <li className={classes['nav__item']}>
+          <NavLink className={classes['nav__link']} to="/settings">Settings</NavLink>
         </li>
       </ul>
       <Friends friendsData = {props.state.friendsData} />

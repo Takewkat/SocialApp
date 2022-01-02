@@ -3,7 +3,7 @@ import { Routes, Route} from 'react-router-dom';
 
 import Header from "./components/header/Header";
 import Nav from './components/nav/Nav';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/Profile-container';
 import UsersContainer from './components/users/Users-container';
 import Dialogs from './components/dialogs/Dialogs';
 import Settings from './components/settings/Settings'
@@ -18,22 +18,22 @@ function App(props) {
 
       <aside className="aside">
         <div className="aside__sticky">
-          <Nav state = {props.state.nav} />
+          <Nav />
         </div>
       </aside>
       <main className="main">
       <Routes>
         <Route
-          path="/profile"
-          element={ <Profile state = {props.state.profilePage} /> }
+          path="/profile/*"
+          element={ <ProfileContainer /> }
         />
         <Route
           path="/users"
-          element={ <UsersContainer state = {props.state.usersPage} /> }
+          element={ <UsersContainer /> }
         />
         <Route
           path="/dialogs"
-          element={ <Dialogs state = {props.state.dialogsPage} /> }
+          element={ <Dialogs /> }
         />
         <Route
           path="/settings"
@@ -45,6 +45,5 @@ function App(props) {
     </div>
   );
 }
-
 
 export default App;

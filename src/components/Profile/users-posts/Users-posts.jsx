@@ -17,10 +17,7 @@ function UsersPost(props) {
 
 	return (
 		<div className={ classes['user-posts'] }>
-			<NewPostContainer
-			newPostText={props.newPostText}
-			postData={props.postData} />
-
+			<NewPostContainer />
 			<ul className={ classes['user-posts__list'] }>
 				{ postElements }
 			</ul>

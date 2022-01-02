@@ -1,13 +1,11 @@
-import UsersPost from "./Users-posts";
+/*import UsersPost from "./Users-posts";
 import {connect} from "react-redux";
 
-function mapStateToProps (state) {
+function mapStateToProps (store) {
+    //console.log("ALLO",store) ||
     return {
-        newPostText: state.newPostText,
-        postData: state.postData
+        postData: store.profilePage.postData
     }
 }
 
-export default connect(
-    mapStateToProps
-) (UsersPost);
+export default connect(mapStateToProps)(UsersPost);

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import classes from './Dialogs.module.css'
 
 import DialogsItem from './dialogsItem/DialogsItem';
@@ -6,7 +8,7 @@ import MessagesContainer from './messages/Messages-container';
 
 function Dialogs(props) {
 
-    let dialogsElements = props.state.dialogsData.map((d, key) => {
+    let dialogsElements = props.dialogsData.map((d, key) => {
         return (
             <li className={classes['dialogs__item']} key={key}>
                 <DialogsItem 
@@ -21,11 +23,12 @@ function Dialogs(props) {
             <ul className={classes['dialogs__list']}>
             {dialogsElements}
             </ul>    
-            <MessagesContainer messagesData = {props.state.messagesData}
-            newMessageBody = {props.state.newMessageBody} />
+            <MessagesContainer />
         
         </div>    
     )
 }
 
-export default Dialogs;
+export default connect(store => ({
+    dialogsData: store.dialogsPage.dialogsData
+}))(Dialogs);;

@@ -3,7 +3,6 @@ import Message from './message/Message';
 
 import classes from './Messages.module.css'
 
-
 function Messages(props) {    
     
 	let messagesElements = props.messagesData.map((m, key) => {

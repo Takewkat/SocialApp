@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import classes from './Friends.module.css'
 
@@ -11,4 +12,6 @@ function Friends(props) {
     )
 }
 
-export default Friends;
+export default connect(store => ({
+    friendsData: store.nav.friendsData
+}))(Friends);

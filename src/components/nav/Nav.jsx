@@ -7,6 +7,8 @@ import Friends from './friends/Friends';
 //activeClassName no longer support. I should find the solution
 //className={({ isActive }) => "nav__link" + (isActive ? ".active" : "")}
 //className={`${classes['nav__link']} ${isActive && classes['active']}`
+//activeStyle={fontWeight: "bold"}
+
 function Nav(props) {
   return (
     <nav className={ classes['nav']}>
@@ -24,7 +26,7 @@ function Nav(props) {
           <NavLink className={classes['nav__link']} to="/settings">Settings</NavLink>
         </li>
       </ul>
-      <Friends friendsData = {props.state.friendsData} />
+      <Friends />
     </nav>
   )
 }

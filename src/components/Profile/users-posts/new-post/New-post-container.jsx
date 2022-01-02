@@ -3,10 +3,9 @@ import { addPostActionCreator, updatePostActionCreator } from '../../../../redux
 import NewPostForm from './New-post';
 
 
-function mapStateToProps (state) {
-    return {
-        postData: state.postData,
-        newPostText: state.newPostText
+function mapStateToProps (store) {
+    return {        
+        newPostText: store.profilePage.newPostText,
     }
 }
 function mapDispatchToProps (dispatch) {
@@ -15,8 +14,7 @@ function mapDispatchToProps (dispatch) {
             dispatch(addPostActionCreator());
         },
         updatenewPostText: (text) => {
-            let action = updatePostActionCreator(text);
-            dispatch(action);
+            dispatch(updatePostActionCreator(text));
         },
     }
 }

@@ -9,7 +9,7 @@ import Friends from './friends/Friends';
 //className={`${classes['nav__link']} ${isActive && classes['active']}`
 //activeStyle={fontWeight: "bold"}
 
-function Nav(props) {
+function Nav() {
   return (
     <nav className={ classes['nav']}>
       <ul className={ classes['nav__list']}>

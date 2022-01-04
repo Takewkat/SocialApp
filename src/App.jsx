@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route} from 'react-router-dom';
 
-import Header from "./components/header/Header";
+import HeaderContainer from './components/header/HeaderContainer';
 import Nav from './components/nav/Nav';
 import ProfileContainer from './components/Profile/Profile-container';
 import UsersContainer from './components/users/Users-container';
@@ -10,11 +10,11 @@ import Settings from './components/settings/Settings'
 
 import './App.css';
 
-function App(props) {
+function App() {
   //debugger
   return (
     <div className="grid">
-      <Header />
+      <HeaderContainer />
 
       <aside className="aside">
         <div className="aside__sticky">

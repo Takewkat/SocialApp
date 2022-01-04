@@ -15,7 +15,7 @@ function UserData(props) {
         <div className={classes.user__data}>
         <div className={classes.profile__avatarform}>
           <div className={classes.avatar_img}>
-              <img src={props.profile.photos.large} alt="avatar"/>
+              <img src={props.profile.photos.large ? props.profile.photos.large : avatar} alt="avatar"/>
           </div>
         <div className="user-data__info">INFO</div>
         </div>

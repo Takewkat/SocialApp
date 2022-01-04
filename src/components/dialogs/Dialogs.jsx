@@ -23,8 +23,7 @@ function Dialogs(props) {
             <ul className={classes['dialogs__list']}>
             {dialogsElements}
             </ul>    
-            <MessagesContainer />
-        
+            <MessagesContainer />        
         </div>    
     )
 }

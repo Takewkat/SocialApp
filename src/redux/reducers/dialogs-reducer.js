@@ -19,7 +19,7 @@ export default function dialogsReducer(state = initialState, action) {
 
     switch (action.type) {
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
+            let body = state.messageText;
             return {
                 ...state,
                 newMessageBody: '',
@@ -35,9 +35,10 @@ export default function dialogsReducer(state = initialState, action) {
     }
 }
 
-export function sendMessageActionCreator() {
+export function sendMessageActionCreator(messageText) {
 	return {
-        type: SEND_MESSAGE
+        type: SEND_MESSAGE,
+        messageText: messageText
     }
 };
 

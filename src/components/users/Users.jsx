@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom';
 import classes from './Users.module.css';
 import user_image from'../../image/post.jpg'
 
-
 function Users(props) {
 	// debugger	
-	let pagesCount = Math.ceil(props.totalUsersCount/props.pageSize)
+	let pagesCount = Math.ceil(props.totalUsersCount/props.pageSize);
 
 	let pages = [];
 	for ( let i=1; i <= pagesCount; i++) {
@@ -53,9 +52,15 @@ function Users(props) {
 							<NavLink to={"/profile/" + user.id}>             
 							<img src={user.photos.small != null ? user.photos.small : user_image} className={classes['user__image']} alt="avatar"/>
 							</NavLink>
+
 							{user.followed 
-							? <button onClick={() => {props.unfollow(user.id)}} className={classes['user__follow-button']}>Follow</button> 
-							: <button onClick={() => {props.follow(user.id)}} className={classes['user__follow-button']}>Unfollow</button>}								
+							? <button disabled={props.followingInProgress.some(id => id === user.id)} 
+							onClick={() => {props.unfollow(true, user.id)}} className={classes['user__follow-button']}>
+									UnFollow</button> 
+							: <button disabled={props.followingInProgress.some(id => id === user.id)} 
+							onClick={() => {props.follow(true, user.id)}} className={classes['user__follow-button']}>
+									Follow</button>}
+
 							<div className={classes['user__id']}>{user.id}</div>                
 							<div className={classes['user__name']}>{user.name}</div>
 							<div className={classes['user__status']}>{user.status}</div>

@@ -1,3 +1,5 @@
+import {userAPI} from '../../api/api';
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
@@ -30,4 +32,16 @@ export function setUserDataActionCreator(userID, email, login, isAuth) {
           isAuth: isAuth
         }
     }
-};
+}
+//THUNK
+export function getAuthInfo() {
+  return (dispatch) => {
+  userAPI.authMe()
+    .then(data => {
+      let {id, email, login} = data.data;
+      if (data.resultCode === 0)	{        
+        dispatch(setUserDataActionCreator(id, email, login));
+      }
+    });
+  }
+}

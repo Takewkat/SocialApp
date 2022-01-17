@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route} from 'react-router-dom';
 
+import AuthPage from './components/auth/authpage';
 import HeaderContainer from './components/header/HeaderContainer';
 import Nav from './components/nav/Nav';
 import ProfileContainer from './components/Profile/Profile-container';
@@ -26,6 +27,10 @@ function App() {
         <Route
           path="/profile/*"
           element={ <ProfileContainer /> }
+        />
+        <Route
+            path="/login"
+            render={ () => <AuthPage/> }
         />
         <Route
           path="/users"

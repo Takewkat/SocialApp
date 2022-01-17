@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import classes from './Dialogs.module.css'
 
@@ -28,6 +27,4 @@ function Dialogs(props) {
     )
 }
 
-export default connect(store => ({
-    dialogsData: store.dialogsPage.dialogsData
-}))(Dialogs);;
+export default Dialogs

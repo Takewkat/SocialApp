@@ -3,18 +3,16 @@ import React from 'react';
 import classes from "./Profile.module.css";
 import background from "../../image/background.jpg";
 
-import UserData from './userData/UserData';
-import UsersPost from './users-posts/Users-posts';
+import UserDataContainer from './userData/UserData-container';
+import UserPostsContainer from './users-posts/Users-posts-container';
 
-function Profile(props) {
+function Profile() {
     // debugger
     return (
         <main className={classes.main}>
             <img className={classes.bg_img} src={background} alt=""/>
-            <UserData profile={props.profile}/>
-            <UsersPost
-            postData={props.postData}
-            />
+            <UserDataContainer/>
+            <UserPostsContainer/>
         </main>
     )
 }

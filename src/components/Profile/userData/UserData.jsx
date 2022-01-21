@@ -19,7 +19,7 @@ function UserData(props) {
           </div>
         <div className="user-data__info">INFO</div>
         </div>
-        <UserStatus status="" uploadStatus="" />
+        <UserStatus status={props.status} uploadStatus={props.uploadStatus} />
           <div className="user-data__name test"></div>
           <div className="user-data__site"></div>
         </div>        

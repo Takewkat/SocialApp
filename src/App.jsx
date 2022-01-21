@@ -1,12 +1,12 @@
 import React from 'react';
-import { Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import AuthPage from './components/auth/authpage';
 import HeaderContainer from './components/header/HeaderContainer';
 import Nav from './components/nav/Nav';
 import ProfileContainer from './components/Profile/Profile-container';
 import UsersContainer from './components/users/Users-container';
-import Dialogs from './components/dialogs/Dialogs';
+import DialogsContainer from './components/dialogs/Dialogs-containter';
 import Settings from './components/settings/Settings'
 
 import './App.css';
@@ -38,7 +38,7 @@ function App() {
         />
         <Route
           path="/dialogs"
-          element={ <Dialogs /> }
+          element={ <DialogsContainer /> }
         />
         <Route
           path="/settings"

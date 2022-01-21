@@ -1,4 +1,4 @@
-import {userAPI} from '../../api/api';
+import AuthAPI from '../../api/authAPI';
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -33,15 +33,42 @@ export function setUserDataActionCreator(userID, email, login, isAuth) {
         }
     }
 }
-//THUNK
+//THUNKS
 export function getAuthInfo() {
   return (dispatch) => {
-  userAPI.authMe()
+  AuthAPI.getAuth()
     .then(data => {
       let {id, email, login} = data.data;
       if (data.resultCode === 0)	{        
         dispatch(setUserDataActionCreator(id, email, login));
       }
     });
+  }
+}
+
+export function login(email, password, rememberMe) { 
+  return (dispatch) => {
+    AuthAPI.login(email, password, rememberMe)
+      .then( respone => {
+        console.log('promise');
+        console.log(respone);
+        if ( respone.data.resultCode === 0 ) {
+          console.log('login');
+          dispatch(getAuthInfo());
+        }
+      });
+  }
+}
+
+export function logout() { 
+  return (dispatch) => {
+    AuthAPI.logout()
+      .then( respone => {
+        console.log(respone);
+        if ( respone.data.resultCode === 0 ) {
+          console.log('logout');
+          dispatch(setUserDataActionCreator(null, null, null, false));
+        }
+      });
   }
 }

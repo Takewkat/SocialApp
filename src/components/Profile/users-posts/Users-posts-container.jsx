@@ -1,4 +1,4 @@
-/*import UsersPost from "./Users-posts";
+import UsersPost from "./Users-posts";
 import {connect} from "react-redux";
 
 function mapStateToProps (store) {

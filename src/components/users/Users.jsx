@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import classes from './Users.module.css';
 import user_image from'../../image/post.jpg'

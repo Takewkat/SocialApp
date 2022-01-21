@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import avatar from "../../../image/avatar.jpg";
 import classes from './../Dialogs.module.css';
@@ -12,7 +12,7 @@ function DialogsItem(props) {
         </div>
         <div className={classes['dialog__info']}>
             <div className={classes['dialog__name']}>{props.name} </div>
-            <div className={classes['dialog__message']}> messages</div>
+            <div className={classes['dialog__message']}>{props.messages}</div>
         </div>
         </NavLink>
     )

@@ -7,10 +7,10 @@ import NewPostContainer from './new-post/New-post-container';
 
 function UsersPost(props) {
 
-	let postElements = props.postData.map((p, id) => {
+	let postElements = props.postData.map((postData, key) => {
 		return(
-			<li className={ classes['user-posts__item'] } key={id}>
-				<Post id={p.id} message={p.message} countlikes={p.countlikes} />
+			<li className={ classes['user-posts__item'] } key={key}>
+				<Post fullName={postData.fullName} message={postData.message} />
 			</li>
 		)
 	});
@@ -19,7 +19,7 @@ function UsersPost(props) {
 		<div className={ classes['user-posts'] }>
 			<NewPostContainer />
 			<ul className={ classes['user-posts__list'] }>
-				{ postElements }
+				{postElements}
 			</ul>
 		</div>
 	)

@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './AuthPage.module.css';
-import { reduxForm, Field } from 'redux-form';
-import { connect } from 'react-redux';
-import { login } from '../../redux/reducers/auth-reducer';
+import {reduxForm, Field} from 'redux-form';
+import {connect} from 'react-redux';
+import {login} from '../../redux/reducers/auth-reducer';
+import {requiredFields, maxLengthCreator} from '../../utils/validators/validator';
 
+const maxLength = maxLengthCreator(20);
 // Component
 function AuthForm(props) {
   console.log('props from AuthForm', props);
@@ -14,14 +16,32 @@ function AuthForm(props) {
         <div className={classes['auth-form__body']}>
           <label className={classes['auth-form__label']} htmlFor="loginEmail">
             <span>login</span>
-            <Field className={classes['auth-form__input']} name="loginEmail" component="input" type="text"/>
+            <Field 
+              className={classes['auth-form__input']} 
+              name="loginEmail" 
+              component="input" 
+              type="text"
+              validate={[requiredFields, maxLength]}
+            />
           </label>
           <label className={classes['auth-form__label']} htmlFor="loginPassword">
             <span>password</span>
-            <Field className={classes['auth-form__input']} name="loginPassword" component="input" type="password"/>
+            <Field 
+              className={classes['auth-form__input']} 
+              name="loginPassword" 
+              component="input" 
+              type="password"
+              validate={[requiredFields, maxLength]}
+            />
           </label>
           <label className={classes['auth-form__']} htmlFor="rememberMe">
-            <Field className={classes['auth-form__']} name="rememberMe" component="input" type="checkbox"/>
+            <Field 
+              className={classes['auth-form__']} 
+              name="rememberMe" 
+              component="input" 
+              type="checkbox"
+              validate={[requiredFields]}
+            />
             <span>Remember me</span>
           </label>
         </div>
@@ -33,9 +53,9 @@ function AuthForm(props) {
   )
 }
 
-// Component
+// Component reduxForm = hoc
 const LoginReduxForm = reduxForm({
-  // Уникальное имя для данной формы
+  // Unique name
   form: 'loginForm'
 }) (AuthForm);
 

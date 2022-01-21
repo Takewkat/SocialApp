@@ -7,7 +7,7 @@ function Message(props) {
         <div className={classes['message']}>
         <div className={classes['message__header']}>
             <div className={classes['message__name']}>{props.name}</div>
-            <div className={classes['message__date']}>{props.date}</div>
+            <div className={classes['message__date']}>date</div>
         </div>
         <div className={classes['message__body']}>
             <p>{props.message}</p>

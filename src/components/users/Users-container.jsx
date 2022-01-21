@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import Users from './Users';
 import Loading from '../common/loading/Loading';
-import { follow, unfollow, setCurrentPage, 
+import {follow, unfollow, setCurrentPage, 
 	toggleFollowingInProgress,
 	getUsersThunkCreator} from '../../redux/reducers/users-reducer';
 class UsersContainer extends React.Component {
@@ -12,6 +12,7 @@ class UsersContainer extends React.Component {
 		this.props.getUsers(this.props.currentPage, this.props.pageSize);
 	}
 	onPageChanged = (pageNumber) => {
+		this.props.setCurrentPage( pageNumber );
 		this.props.getUsers(pageNumber, this.props.pageSize);
 	}
 	render() {

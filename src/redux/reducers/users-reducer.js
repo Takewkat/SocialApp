@@ -1,4 +1,5 @@
-import {userAPI} from '../../api/api';
+import UsersAPI from '../../api/usersAPI';
+import FollowAPI from '../../api/followAPI';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -42,7 +43,7 @@ export default function usersReducer(state = initialState, action) {
 		case SET_USERS:
 			return {
 				...state,
-				users: action.users
+				users: [...action.users]
 			}
 		case SET_CURRENT_PAGE:
 			return {
@@ -64,7 +65,7 @@ export default function usersReducer(state = initialState, action) {
 				...state,
 				followingInProgress: action.isFetching 
 				? [...state.followingInProgress, action.userId]
-				: state.followingInProgress.filter(id => id != action.userId)
+				: state.followingInProgress.filter(id => id !== action.userId)
 			}
 		default:
 			return state;
@@ -84,7 +85,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 	return (dispatch) => {
 		dispatch(toggleIsFetching(true));
 		//if (this.props.users.length === 0) {
-			userAPI.getUsers(currentPage, pageSize).then(data => {
+			UsersAPI.getUsers(currentPage, pageSize).then(data => {
 				dispatch(toggleIsFetching(false));
 				dispatch(setUsers(data.items));
 				dispatch(setTotalUsersCount(data.totalCount));
@@ -96,7 +97,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 export const follow = (userId) => {
 	return (dispatch) => {
 		dispatch (toggleFollowingInProgress(true, userId));
-		userAPI.postFollow(userId).then(data => {
+		FollowAPI.Follow(userId).then(data => {
 			if (data.resultCode === 0)	{
 				dispatch(followSucces(userId))
 			}
@@ -108,7 +109,7 @@ export const follow = (userId) => {
 export const unfollow = (userId) => {
 	return (dispatch) => {
 		dispatch (toggleFollowingInProgress(true, userId));
-		userAPI.deleteUnfollow(userId).then(data => {
+		FollowAPI.Unfollow(userId).then(data => {
 			if (data.resultCode === 0)	{
 				dispatch(unfollowSucces(userId))
 			}

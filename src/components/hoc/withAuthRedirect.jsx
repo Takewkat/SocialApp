@@ -14,6 +14,5 @@ export function withAuthRedirect (Component) {
 
   function mapStateToProps(state) {return { isAuth: state.auth.isAuth }}
 
-  // Коннектим компонент, чтоб прокинуть в него props
   return connect(mapStateToProps)(RedirectComponent);
 }

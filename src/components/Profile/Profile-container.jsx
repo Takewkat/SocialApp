@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {useMatch} from "react-router-dom";
 
 import Profile from "./Profile";
-import {getUserProfile} from "../../redux/reducers/profile-reducer";
+import {loadProfile, loadStatus} from "../../redux/reducers/profile-reducer";
 
 const ProfileURLMatch = (props) => {
   const match = useMatch('/profile/:userId');
@@ -12,15 +12,19 @@ const ProfileURLMatch = (props) => {
 class ProfileContainer extends React.Component {
 	
 	componentDidMount() {
-		let userId = this.props.match ? this.props.match.params.userId : 'MyID';
-		this.props.getUserProfile(userId);
-	}	
+		//let userId = this.props.match ? this.props.match.params.userId : 'MyID';
+		this.props.loadProfile();
+    this.props.loadStatus();
+	}
+	
+  componentDidUpdate() {  
+    this.props.loadProfile(/* user id */ );
+    this.props.loadStatus();
+  }
+
 	render() {
 		return (
-			<Profile 
-			{...this.props}
-			profile={this.props.profile}
-			/>
+			<Profile/>
 		)	
 	}
 }
@@ -30,4 +34,4 @@ let mapStateToProps = (store) => ({
 	postData: store.profilePage.postData,
 })
 
-export default connect(mapStateToProps,{getUserProfile})(ProfileURLMatch);
+export default connect(mapStateToProps,{loadProfile, loadStatus})(ProfileURLMatch);
